@@ -1,0 +1,93 @@
+#!/bin/bash
+#
+# Squish a CM otapackage for distribution
+# cyanogen
+
+. $ANDROID_BUILD_TOP/vendor/cm/tools/colors
+
+OUT_TARGET_HOST=`uname -s`
+if [ x"$OUT_TARGET_HOST" = x"Linux" ]
+then
+    OUT_TARGET_HOST=linux-x86
+    XARGS="xargs --max-args=1 --max-procs `grep 'processor' /proc/cpuinfo|wc -l`"
+elif [ x"$OUT_TARGET_HOST" = x"Darwin" ]
+then
+    OUT_TARGET_HOST=darwin-x86
+    XARGS="xargs -n 1 -P `sysctl hw.ncpu | awk '{print $2}'`"
+else
+    echo -e "${bldred}ERROR: unknown/unsupported host OS!${rst}"
+    exit 1
+fi
+
+if [ -z "$OUT" -o ! -d "$OUT" ]; then
+    echo -e "${bldred}ERROR: $0 only works with a full build environment. $OUT should exist.${rst}"
+    exit 1
+fi
+
+OPTICHARGER=$ANDROID_BUILD_TOP/vendor/cm/tools/opticharger
+QUIET=-q
+DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
+
+# Fix LCD Density for CMRemix
+DEVICELCD=`sed -n -e'/ro\.sf\.lcd_density/s/^.*=//p' $OUT/system/build.prop`
+if [ "$DEVICELCD" = "240" ]; then
+   sed -i 's/ro.sf.lcd_density=240/ro.sf.lcd_density=182/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "320" ]; then
+    sed -i 's/ro.sf.lcd_density=320/ro.sf.lcd_density=245/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "480" ]; then
+    sed -i 's/ro.sf.lcd_density=480/ro.sf.lcd_density=370/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "560" ]; then
+    sed -i 's/ro.sf.lcd_density=560/ro.sf.lcd_density=520/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "213" ]; then
+    sed -i 's/ro.sf.lcd_density=213/ro.sf.lcd_density=182/g' $OUT/system/build.prop
+fi
+
+# Device specific LCD Density fix
+DEVICEID=`sed -n -e'/ro\.product\.device/s/^.*=//p' $OUT/system/build.prop`
+if [ "$DEVICEID" = "SGH-I717" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "GT-N7000" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "mako" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "flo" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=286/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "deb" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=286/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "amami" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=286/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "togari" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=300/g' $OUT/system/build.prop
+fi
+cp -f $OUT/system/build.prop $REPACK/ota/system/build.prop
+
+# Delete CMRemix specific files
+if [ -f $ANDROID_BUILD_TOP/vendor/cm/tools/squisher.rm ]; then
+    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/cm/tools/squisher.rm`; do
+        rm -rf $OUT/$RM_FILE
+    done
+fi
+
+# Delete target product specific files
+if [ -f $ANDROID_BUILD_TOP/vendor/cm/tools/$TARGET_PRODUCT-squisher.rm ]; then
+    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/cm/tools/$TARGET_PRODUCT-squisher.rm`; do
+        rm -rf $OUT/$RM_FILE
+    done
+fi
+
+# Delete specific files for lower ram devices
+if [ "$CM_LOW_RAM_DEVICE" = "true" ]; then
+    if [ -f $ANDROID_BUILD_TOP/vendor/cm/tools/squisher-lrd.rm ]; then
+        echo -e "${bldblu}This device is low-RAM"
+        for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/cm/tools/squisher-lrd.rm`; do
+            rm -rf $OUT/$RM_FILE
+            echo -e "${cya} $RM_FILE"
+        done
+        echo -e "${bldblu}These applications have been removed${txtrst}"
+    fi
+fi
+
+# Optimize PNG resources in APKs
+( cd $OUT/system; find framework/ app/ priv-app/ ! -name 'webview.apk' -name \*.apk -print | $XARGS $OPTICHARGER; )
+
+exit 0
