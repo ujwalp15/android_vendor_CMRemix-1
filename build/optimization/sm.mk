@@ -135,16 +135,16 @@ ifeq (true,$(ENABLE_SANITIZE))
    OPT10 := (mem-sanitize)
 endif
 
-ifeq (true,$(POLLY_OPTIMIZATION))
-   OPT10 := (polly)
+ifeq (true,$(USE_ARM_MODE))
+   OPT10 := (arm-mode)
 endif
 
 ifeq (true,$(ENABLE_GCCONLY))
-   OPT5 := (gcc)
+   OPT5 := (gcc-tunings)
 endif
 
-ifeq (true,$(CLANG_O3))
-   OPT6 := (llvm -O3)
+ifeq ($,$(TARGET_DRAGONTC_VERSION))
+   OPT6 := (polly)
 endif
 
   GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)$(OPT11)
