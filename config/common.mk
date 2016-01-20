@@ -358,3 +358,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
+
+# Inherite CM vendor
+CM_VENDOR := vendor/cm
+include $(CM_VENDOR)/Main.mk
