@@ -41,5 +41,9 @@ endif
 # enabled Debuggable by default
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
+   persist.service.debuggable=1 \
    persist.sys.usb.config=mtp,adb
+
+# setup scheduler tunable
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+   ro.qualcomm.perf.cores_online=2
