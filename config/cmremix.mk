@@ -15,6 +15,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(CMREMIX_BUILD_VERSION) \
     cmremix.ota.version=$(CMREMIX_BUILD_VERSION)
 
+#CMRemix Build Changelog
+#export BUILD_CMREMIX_CHANGELOG=true
+
 # supersu
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
@@ -23,3 +26,30 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CMRemixOTA \
     CMRemixUpdater
+
+# Busybox
+PRODUCT_PACKAGES += \
+    OmniSwitch \
+    Busybox
+
+# Viper4Android
+PRODUCT_COPY_FILES += \
+vendor/cm/prebuilt/common/apk/ViPER4Android/ViPER4Android_FX_A4.x/ViPER4Android_FX_A4.x.apk:system/app/ViPER4Android/ViPER4Android_FX_A4.x.apk
+vendor/cm/prebuilt/common/apk/ViPER4Android/addon.d/95-LolliViPER.sh:system/addon.d/95-LolliViPER.sh
+vendor/cm/prebuilt/common/apk/ViPER4Android/audio_policy.sh:system/audio_policy.sh
+
+# KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
+PRODUCT_COPY_FILES += \
+vendor/cm/prebuilt/common/apk/Savoca-Kcal/Savoca-Kcal.apk:system/app/Savoca-Kcal/Savoca-Kcal.apk
+
+# MDNIE-tuner
+PRODUCT_COPY_FILES += \
+vendor/cm/prebuilt/common/apk/MDNIE-tuner/MDNIE-tuner.apk:system/app/MDNIE-tuner/MDNIE-tuner.apk
+
+# OpenCamra
+PRODUCT_COPY_FILES += \
+vendor/cm/prebuilt/common/apk/OpenCamera/OpenCamera.apk:system/app/OpenCamera/OpenCamera.apk
+
+# KernelAdiutor
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/apk/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
