@@ -30,7 +30,7 @@ endif
 
 #include $(CM_VENDOR)/configs/clear_vars.mk
 include $(CM_VENDOR)/config/cmremix.mk
-include $(CM_VENDOR)/build/optimization/sm_config.mk
-include $(CM_VENDOR)/build/optimization/sm.mk
+#include $(CM_VENDOR)/build/optimization/sm_config.mk
+#include $(CM_VENDOR)/build/optimization/sm.mk
 
 

@@ -1,5 +1,5 @@
 # CMREMIX Rom version
-export CMREMIX_VERSION= MM_6.0.1_R3_Nightly_cm13_v0.1
+export CMREMIX_VERSION= MM_6.0.1_R13_Nightly_v7.4
 # Zion Kernel version
 export KERNEL_VERSION= ZION959-cm-13.0-trlte-v1.6
 
