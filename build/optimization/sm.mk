@@ -95,15 +95,15 @@ export SM_KERNEL_NAME := $(filter %sabermod,$(SM_KERNEL))
  export LD_LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LD_LIBRARY_PATH)
  export LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LIBRARY_PATH)
 
-ifeq ($(USE_O3_OPTIMIZATIONS),true)
+ifeq ($(O3_OPTIMIZATIONS),true)
    OPT1 := (O3)
 endif
 
-ifeq ($(GRAPHITE_OPTS),true)
+ifeq ($(GRAPHITE_OPTIMIZATION),true)
    OPT2 := (graphite)
 endif
 
-ifeq (true,$(STRICT_ALIASING))
+ifeq (true,$(LOCAL_STRICT_ALIASING))
    OPT3 := (strict)
 endif
 
@@ -139,7 +139,7 @@ ifeq (true,$(USE_ARM_MODE))
    OPT10 := (arm-mode)
 endif
 
-ifeq (true,$(ENABLE_GCCONLY))
+ifeq (true,$(ENABLE_GCC_DEFAULTS))
    OPT5 := (gcc-tunings)
 endif
 
