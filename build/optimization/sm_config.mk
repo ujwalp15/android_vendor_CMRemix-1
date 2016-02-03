@@ -25,12 +25,6 @@
   ENABLE_GCC_DEFAULTS := true
   O3_OPTIMIZATIONS := true
 
-# enabled Debuggable by default
-PRODUCT_PROPERTY_OVERRIDES += \
-   persist.service.adb.enable=1 \
-   persist.service.debuggable=1 \
-   persist.sys.usb.config=mtp,adb
-
 # setup scheduler tunable
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.qualcomm.perf.cores_online=2
