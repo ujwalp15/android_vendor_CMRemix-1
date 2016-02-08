@@ -20,11 +20,40 @@
   TARGET_SM_KERNEL := 4.9
 
 # CMRemix-MM Optimization
-  GRAPHITE_OPTIMIZATION := false
+  GRAPHITE_OPTIMIZATION := true
   LOCAL_STRICT_ALIASING := true
   ENABLE_GCC_DEFAULTS := true
   O3_OPTIMIZATIONS := true
+  USE_ARM_MODE := true
+  DISABLE_DTC_OPTS := false
+  ENABLE_PTHREAD := true
 
 # setup scheduler tunable
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.qualcomm.perf.cores_online=2
+
+#################
+# NO OPTIMIZATION
+#################
+# Bluetooth modules
+LOCAL_BLUETOOTH_BLUEDROID := \
+  bluetooth.default \
+  libbt-brcm_stack \
+  audio.a2dp.default \
+  libbt-brcm_gki \
+  libbt-utils \
+  libbt-qcom_sbc_decoder \
+  libbt-brcm_bta \
+  bdt \
+  bdtest \
+  libbt-hci \
+  libosi \
+  ositests \
+  libbt-vendor \
+  libbluetooth_jni
+
+ifndef NO_OPTIMIZATIONS
+  NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
+else
+  NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
+endif
