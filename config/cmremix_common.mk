@@ -1,7 +1,7 @@
 # CMREMIX Rom version
-export CMREMIX_VERSION= N_7.1.0_r7_Nightly_cm14.1_v0.3
+export CMREMIX_VERSION= N_7.1.0_r7_Nightly_cm14.1_v0.4
 # Zion Kernel version
-export KERNEL_VERSION= ZION959_cm-14.1-h830_v1.1
+export KERNEL_VERSION= ZION959_cm-14.1-h830_v1.2
 
 # CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
