@@ -46,3 +46,7 @@ ifeq ($(CMREMIX_USE_ADDREMOVE),true)
     GET_PROJECT_RMS := $(shell vendor/cm/tools/removeprojects.py $(PRODUCT_NAME))
     GET_PROJECT_ADDS := $(shell vendor/cm/tools/addprojects.py $(PRODUCT_NAME))
 endif
+
+# CMRemixOTA
+PRODUCT_PACKAGES += \
+    CMRemixUpdater
