@@ -141,7 +141,7 @@ def add_to_manifest(repositories):
 
 def fetch_dependencies(device):
 #    print('Looking for CMRemix product dependencies')
-    dependencies_path = 'vendor/cmremix/dependencies/' + device + '.dependencies'
+    dependencies_path = 'vendor/cm/dependencies/' + device + '.dependencies'
 
     syncable_repos = []
 
