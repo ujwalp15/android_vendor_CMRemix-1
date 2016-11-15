@@ -101,7 +101,7 @@ def add_to_manifest(repositories):
         try:
             repo_revision = repository['revision']
         except:
-            repo_revision = "cm-14.0"
+            repo_revision = "cm-14.1"
 
         try:
             repo_account = repository['account']
@@ -132,7 +132,7 @@ def add_to_manifest(repositories):
 
 def fetch_extras(def_file):
     print('Looking for add projects entries')
-    projects_path = 'vendor/cm/extras/addremove/' + def_file
+    projects_path = 'vendor/cmremix/extras/addremove/' + def_file
 
     syncable_repos = []
 

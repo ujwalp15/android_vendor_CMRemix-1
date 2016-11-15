@@ -64,8 +64,8 @@ usage() {
 
 
 # Import Colors
-. ./vendor/cm/tools/colors
-. ./vendor/cm/tools/res/cmremix-start
+. ./vendor/cmremix/tools/colors
+. ./vendor/cmremix/tools/res/cmremix-start
 
 
 # CMREMIX version
@@ -112,8 +112,8 @@ if [ ! -d ".repo" ]; then
     echo ""
     exit 1
 fi
-if [ ! -d "vendor/cm" ]; then
-    echo -e "${bldred}No vendor/cm directory found. Is this a CMREMIX build tree?${rst}"
+if [ ! -d "vendor/cmremix" ]; then
+    echo -e "${bldred}No vendor/cmremix directory found. Is this a CMREMIX build tree?${rst}"
     echo ""
     exit 1
 fi
@@ -227,9 +227,9 @@ fi
 # CMREMIX device dependencies
 echo -e "${bldcya}Looking for CMREMIX device dependencies${bldgrn}"
 if [ "$opt_kr" -ne 0 ]; then
-    vendor/cm/tools/getdependencies.py "$device" "$opt_kr"
+    vendor/cmremix/tools/getdependencies.py "$device" "$opt_kr"
 else
-    vendor/cm/tools/getdependencies.py "$device"
+    vendor/cmremix/tools/getdependencies.py "$device"
 fi
 echo -e "${rst}"
 
@@ -261,7 +261,7 @@ if [ "$opt_clean" -eq 1 ]; then
     echo ""
 elif [ "$opt_clean" -eq 2 ]; then
     . build/envsetup.sh
-    lunch "cm_$device-userdebug"
+    lunch "cmremix_$device-userdebug"
     make installclean >/dev/null
     echo -e "${bldcya}Output directory is: ${bldred}Dirty${rst}"
     echo ""
@@ -349,7 +349,7 @@ fi
 
 # Fetch extras
 if [ "$opt_fetch" -ne 0 ]; then
-    ./vendor/cm/tools/extras.sh "$device"
+    ./vendor/cmremix/tools/extras.sh "$device"
 fi
 
 
@@ -380,7 +380,7 @@ rm -f "$OUTDIR"/target/product/"$device"/obj/KERNEL_OBJ/.version
 # Lunch device
 echo ""
 echo -e "${bldcya}Lunching device${rst}"
-lunch "cm_$device-userdebug"
+lunch "cmremix_$device-userdebug"
 
 
 # Get extra options for build
@@ -434,14 +434,14 @@ fi
 
 
 # Cleanup unused built
-rm -f "$OUTDIR"/target/product/"$device"/cm_*-ota*.zip
+rm -f "$OUTDIR"/target/product/"$device"/cmremix_*-ota*.zip
 
 
 # Upload
 if [ "$opt_upload" -ne 0 ]; then
     finally="$OUTDIR/target/product/$device/"
-    md5name=$(basename "${finally}"cm*.md5sum)
-    zipname=$(basename "${finally}"cm*.zip)
+    md5name=$(basename "${finally}"cmremix*.md5sum)
+    zipname=$(basename "${finally}"cmremix*.zip)
 
     echo ""
     if [ -s "$HOME/Server-$device" ]; then
