@@ -70,7 +70,7 @@ usage() {
 
 # CMREMIX version
 export CMREMIX_VERSION_MAJOR="Nougat_7.1.0_r7"
-export CMREMIX_VERSION_MINOR="v3.0"
+export CMREMIX_VERSION_MINOR="v4.0"
 export CMREMIX_VERSION_MAINTENANCE="Official"
 export CMREMIX_KERNEL_VERSION_MAINTENANCE="ZION959"
 # Acceptable maintenance versions are; Stable, Official, Nightly or Unofficial
@@ -85,8 +85,8 @@ fi
 export BUILD_CMREMIX_CHANGELOG=true
 
 # Maintenance logic
-if [ -s "$HOME"/CMRemixname ]; then
-    export CMREMIX_MAINTENANCE=$(cat "$HOME"/CMRemixname)
+if [ -s ~/CMREMIXname ]; then
+    export CMREMIX_MAINTENANCE=$(cat ~/CMREMIXname)
 else
     export CMREMIX_MAINTENANCE="$CMREMIX_VERSION_MAINTENANCE"
 fi
