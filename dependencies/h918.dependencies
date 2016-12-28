@@ -1,0 +1,62 @@
+[
+  {
+    "account":      "CMRemix",
+    "repository":   "android_kernel_lge_msm8996",
+    "target_path":  "kernel/lge/msm8996",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_device_lge_h918",
+    "target_path":  "device/lge/h918",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_device_lge_v20-common",
+    "target_path":  "device/lge/v20-common",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_device_qcom_common",
+    "target_path":  "device/qcom/common",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_vendor_nxp-nfc_opensource_frameworks",
+    "target_path":  "vendor/nxp-nfc/opensource/frameworks",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_vendor_nxp-nfc_opensource_libnfc-nci",
+    "target_path":  "vendor/nxp-nfc/opensource/libnfc-nci",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_vendor_nxp-nfc_opensource_Nfc",
+    "target_path":  "vendor/nxp-nfc/opensource/Nfc",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_packages_apps_Snap-dual-camera",
+    "target_path":  "packages/apps/Snap",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "proprietary_vendor_qcom_binaries",
+    "target_path":  "vendor/qcom/binaries",
+    "revision":     "cm-14.1"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "proprietary_vendor_lge",
+    "target_path":  "vendor/lge",
+    "revision":     "cm-14.1"
+  }
+]
