@@ -909,6 +909,7 @@ EOF
 alias mmp='dopush mm'
 alias mmmp='dopush mmm'
 alias mmap='dopush mma'
+alias mmmap='dopush mmma'
 alias mkap='dopush mka'
 alias cmkap='dopush cmka'
 
@@ -947,4 +948,9 @@ if [ -d $(gettop)/prebuilts/snapdragon-llvm/toolchains ]; then
             export SDCLANG_LTO_DEFS=$(gettop)/device/qcom/common/sdllvm-lto-defs.mk
             ;;
     esac
+fi
+
+# Android specific JACK args
+if [ -n "$JACK_SERVER_VM_ARGUMENTS" ] && [ -z "$ANDROID_JACK_VM_ARGS" ]; then
+    export ANDROID_JACK_VM_ARGS=$JACK_SERVER_VM_ARGUMENTS
 fi

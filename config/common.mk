@@ -146,8 +146,9 @@ PRODUCT_PACKAGES += \
     PhotoTable \
     Terminal
 
-# Include librsjni explicitly to workaround GMS issue
+# Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full \
     librsjni
 
 # Custom CM packages
@@ -160,7 +161,6 @@ PRODUCT_PACKAGES += \
     CyanogenSetupWizard \
     Eleven \
     ExactCalculator \
-    Launcher3 \
     LiveLockScreenService \
     LockClock \
     Screencast \
@@ -242,6 +242,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
+
+# Storage manager
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.storage_manager.enabled=true
 
 # Telephony
 PRODUCT_PACKAGES += \
