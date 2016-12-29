@@ -31,7 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     cmremix.ota.version=$(CMREMIX_BUILD_VERSION)
 
 # Disable ADB authentication and set root access to Apps and ADB, Debuggable by default
-ifeq ($(DISABLE_ADB_AUTH),true)
+ifneq ($(DISABLE_ADB_AUTH),true)
     ADDITIONAL_DEFAULT_PROPERTIES += \
         ro.secure=0 \
         ro.adb.secure=0 \
