@@ -262,9 +262,6 @@ PRODUCT_PACKAGES += \
     su
 endif
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=0
-
 DEVICE_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
