@@ -69,8 +69,8 @@ usage() {
 
 
 # CMREMIX version
-export CMREMIX_VERSION_MAJOR="Nougat_7.1.0_r7"
-export CMREMIX_VERSION_MINOR="v6.0"
+export CMREMIX_VERSION_MAJOR="Nougat_7.1.1_r6"
+export CMREMIX_VERSION_MINOR="v1.0"
 export CMREMIX_VERSION_MAINTENANCE="Official"
 export CMREMIX_KERNEL_VERSION_MAINTENANCE="ZION959"
 # Acceptable maintenance versions are; Stable, Official, Nightly or Unofficial
