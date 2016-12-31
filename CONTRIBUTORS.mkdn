@@ -1,7 +1,7 @@
-LineageOS
+CyanogenMod
 ===========
 
-Maintainers (LineageOS 14.1):
+Maintainers (CyanogenMod 14.1):
 -----------------------------
 * __Acer A700:__ pawitp
 * __Alcatel Idol 3:__ c457
