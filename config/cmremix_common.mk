@@ -50,3 +50,8 @@ endif
 # CMRemixOTA
 PRODUCT_PACKAGES += \
     CMRemixUpdater
+
+
+# KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
+PRODUCT_COPY_FILES += \
+vendor/cmremix/prebuilt/common/apk/Savoca-Kcal/Savoca-Kcal.apk:system/app/Savoca-Kcal/Savoca-Kcal.apk
