@@ -52,6 +52,14 @@ PRODUCT_PACKAGES += \
     CMRemixUpdater
 
 
+#DU Utils Library
+PRODUCT_PACKAGES += \
+    org.dirtyunicorns.utils
+ 
+PRODUCT_BOOT_JARS += \
+    org.dirtyunicorns.utils
+
+
 # KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/Savoca-Kcal/Savoca-Kcal.apk:system/app/Savoca-Kcal/Savoca-Kcal.apk
